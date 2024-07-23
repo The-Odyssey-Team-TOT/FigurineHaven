@@ -78,7 +78,6 @@
     }
   </style>
 </head>
-<%# <body id="GlobeCanvas" data-controller="globe"> %>
   <div class="content">
     <h1 class="text-6xl font-bold mb-4">FigurineHaven</h1>
     <p class="text-xl mb-8">The best StarWars Mersh</p>
@@ -87,88 +86,3 @@
       <a href="/users/sign_in" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-green-700 textdecooff buttonRounded">Log in</a>
     </div>
   </div>
-
-  <script type="module">
-    import { Application, Controller } from "https://unpkg.com/@hotwired/stimulus@3.1.0/dist/stimulus.js";
-    import * as THREE from "https://unpkg.com/three@0.139.0/build/three.module.js";
-
-    class GlobeController extends Controller {
-      connect() {
-        this.initGlobe();
-      }
-
-      initGlobe() {
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(67, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ alpha: true });
-
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.body.appendChild(renderer.domElement);
-        renderer.domElement.id = "globeCanvas";
-
-        const textureLoader = new THREE.TextureLoader();
-        const texture1 = textureLoader.load('<%= asset_path("Coruscant1.png") %>');
-        const texture2 = textureLoader.load('<%= asset_path("Coruscant.png") %>');
-        const texture3 = textureLoader.load('<%= asset_path("Coruscant2.png") %>');
-        const texture4 = textureLoader.load('<%= asset_path("Coruscant3.png") %>');
-
-        const sphereGeometry = new THREE.SphereGeometry(1, 32, 32);
-
-        // Custom Shader Material for Multiple Textures
-        const sphereMaterial = new THREE.ShaderMaterial({
-          uniforms: {
-            texture1: { type: 't', value: texture1 },
-            texture2: { type: 't', value: texture2 },
-            texture3: { type: 't', value: texture3 },
-            texture4: { type: 't', value: texture4 },
-          },
-          vertexShader: `
-            varying vec2 vUv;
-            void main() {
-              vUv = uv;
-              gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-            }
-          `,
-          fragmentShader: `
-            uniform sampler2D texture1;
-            uniform sampler2D texture2;
-            varying vec2 vUv;
-            void main() {
-              vec4 tex1 = texture2D(texture1, vUv);
-              vec4 tex2 = texture2D(texture2, vUv);
-              gl_FragColor = mix(tex1, tex2, 0.5); // Mix textures with equal weight
-            }
-          `
-        });
-
-        const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
-        scene.add(sphere);
-
-        const light = new THREE.PointLight(0xffffff, 1, 100);
-        light.position.set(10, 10, 10);
-        scene.add(light);
-
-        camera.position.z = 3;
-
-        const animate = () => {
-          requestAnimationFrame(animate);
-          sphere.rotation.x += 0.0000;
-          sphere.rotation.y += 0.0006;
-          renderer.render(scene, camera);
-        };
-
-        animate();
-
-        window.addEventListener('resize', () => {
-          camera.aspect = window.innerWidth / window.innerHeight;
-          camera.updateProjectionMatrix();
-          renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-      }
-    }
-
-    const application = Application.start();
-    application.register("globe", GlobeController);
-  </script>
-</body>
-</html>
