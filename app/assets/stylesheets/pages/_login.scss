@@ -1,0 +1,64 @@
+
+
+.log-container {
+  margin-bottom: 5rem;
+  margin-top: 5rem;
+  position: relative;
+  right: -10%;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  width: 70rem;
+  text-align: center;
+}
+
+.log-container h2 {
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.form-inputs .form-group {
+  margin-bottom: 15px;
+}
+
+.form-inputs .form-group input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.form-inputs .form-group label {
+  color: #fff;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.form-actions .button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-actions .button:hover {
+  background-color: #0056b3;
+}
+
+.links {
+  margin-top: 20px;
+}
+
+.links a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.links a:hover {
+  text-decoration: none;
+}

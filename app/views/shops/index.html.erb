@@ -1,0 +1,16 @@
+<div class="container mx-auto my-5">
+  <h1 class="text-3xl font-bold mb-5 text-center text-black">Our Products</h1>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <% @products.each do |product| %>
+      <div class="product-card bg-gray-800 text-white rounded-lg shadow-lg p-5">
+        <%= image_tag product.image_url, class: "w-full h-48 object-cover rounded-t-lg mb-4" %>
+        <h2 class="text-xl font-semibold mb-2"><%= product.name %></h2>
+        <p class="mb-4"><%= truncate(product.description, length: 100) %></p>
+        <p class="text-lg font-bold mb-2"><%= number_to_currency(product.price) %></p>
+        <p class="text-sm mb-4">Stock: <%= product.stock %></p>
+        <%= link_to 'View Product', product_path(product), class: "btn btn-primary w-full" %>
+      </div>
+    <% end %>
+  </div>
+</div>

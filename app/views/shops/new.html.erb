@@ -1,0 +1,17 @@
+<div class="product-form-container text-white">
+  <h2>Add New Product</h2>
+
+  <%= simple_form_for @product, url: shops_path, html: { class: 'new-product-form' } do |f| %>
+    <div class="form-inputs">
+      <%= f.input :name, required: true, input_html: { autocomplete: "name", class: "form-control" } %>
+      <%= f.input :description, as: :text, required: true, input_html: { rows: 5, class: "form-control" } %>
+      <%= f.input :price, required: true, input_html: { class: "form-control" } %>
+      <%= f.input :stock, required: true, input_html: { class: "form-control" } %>
+      <%= f.input :image_url, required: true, input_html: { class: "form-control" } %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Add Product", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

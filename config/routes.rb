@@ -1,12 +1,24 @@
 Rails.application.routes.draw do
+  get 'checkouts/create'
   devise_for :users
   root to: "pages#home"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+  get 'up' => 'rails/health#show', as: :rails_health_check
 
-  # Defines the root path route ("/")
-  # root "posts#index"
+  resources :shops, only: [:index, :new, :show, :create, :destroy]
+
+  resources :orders, only: [:index, :show]
+
+  resources :products do
+    member do
+      post 'add_to_cart', to: 'carts#add_item'
+    end
+  end
+
+  resource :cart, only: [:show] do
+    post 'add_item/:product_id', to: 'carts#add_item', as: 'add_item'
+    delete 'remove_item/:product_id', to: 'carts#remove_item', as: 'remove_item'
+  end
+
+  post 'checkout/create', to: 'checkouts#create', as: 'checkout_create'
 end

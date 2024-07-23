@@ -1,0 +1,29 @@
+<div class="text-center m-3 p-3">
+<h1>Add a new Broom</h1>
+</div>
+
+
+<div class="container mx-auto mt-8 mb-10">
+  <div class="max-w-4xl mx-auto shadow-lg rounded-lg p-6 bg-white">
+    <%= simple_form_for @broom do |f| %>
+      <div class="mb-4">
+        <%= f.input :name, label: "Name", input_html: { class: "form-input mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" } %>
+      </div>
+      <div class="mb-4">
+        <%= f.input :description, label: "Description", input_html: { class: "form-textarea mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" } %>
+      </div>
+      <div class="mb-4">
+        <%= f.input :address, label: "Address", input_html: { class: "form-input mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" } %>
+      </div>
+      <div class="mb-4">
+        <%= f.input :price, label: "Price", input_html: { class: "form-input mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" } %>
+      </div>
+      <div class="mb-4">
+        <%= f.input :photo, label: "Photo", as: :file, input_html: { class: "form-input mt-1 block w-full" } %>
+      </div>
+      <div class="flex justify-end mt-6">
+        <%= f.button :submit, "Add" %>
+      </div>
+    <% end %>
+  </div>
+</div>
