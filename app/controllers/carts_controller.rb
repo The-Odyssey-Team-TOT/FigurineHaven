@@ -1,9 +1,8 @@
 class CartsController < ApplicationController
-  before_action :set_order, only: [:add_item, :show]
+  before_action :set_order, only: [:add_item, :show, :remove_item]
 
   def add_item
     product = Product.find(params[:product_id])
-    @order = current_user.orders.find_or_initialize_by(status: 'cart')
     @cart_item = @order.order_items.find_or_initialize_by(product: product)
 
     @cart_item.unit_price = product.price
@@ -13,6 +12,18 @@ class CartsController < ApplicationController
       redirect_to cart_path, notice: 'Product was successfully added to your cart.'
     else
       redirect_to product_path(product), alert: 'There was a problem adding the product to your cart.'
+    end
+  end
+
+  def remove_item
+    product = Product.find(params[:product_id])
+    @cart_item = @order.order_items.find_by(product: product)
+
+    if @cart_item
+      @cart_item.destroy
+      redirect_to cart_path, notice: 'Product was successfully removed from your cart.'
+    else
+      redirect_to cart_path, alert: 'Product not found in your cart.'
     end
   end
 
