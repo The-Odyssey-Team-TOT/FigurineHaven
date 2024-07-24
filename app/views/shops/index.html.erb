@@ -4,7 +4,7 @@
   <%= form_with url: products_path, method: :get, local: true, class: "mb-5" do |form| %>
     <div class="flex justify-center">
       <%= form.text_field :query, placeholder: "  Search", class: "form-input rounded mr-2 w-full md:w-1/2" %>
-      <%= form.submit "Search", class: "btn btn-primary" %>
+      <%= form.submit "Search",  class: "btn btn-primary" %>
     </div>
   <% end %>
 

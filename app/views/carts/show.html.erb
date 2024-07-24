@@ -1,33 +1,33 @@
-<h1>My Cart</h1>
+<h1 class="p-5">My Cart</h1>
 <% if @order_items.any? %>
-  <table class="table">
+  <table class="table mb-5">
     <thead>
       <tr>
-        <th>Product</th>
-        <th>Quantity</th>
-        <th>Unit Price</th>
-        <th>Total</th>
-        <th>Actions</th>
+        <th class="py-2">Product</th>
+        <th class="py-2">Quantity</th>
+        <th class="py-2">Unit Price</th>
+        <th class="py-2">Total</th>
+        <th class="py-2">Actions</th>
       </tr>
     </thead>
     <tbody>
       <% @order_items.each do |item| %>
         <tr>
-          <td><%= item.product.name %></td>
-          <td><%= item.quantity %></td>
-          <td><%= number_to_currency(item.unit_price) %></td>
-          <td><%= number_to_currency(item.unit_price * item.quantity) %></td>
-          <td>
+          <td class="py-2"><%= item.product.name %></td>
+          <td class="py-2"><%= item.quantity %></td>
+          <td class="py-2"><%= number_to_currency(item.unit_price) %></td>
+          <td class="py-2"><%= number_to_currency(item.unit_price * item.quantity) %></td>
+          <td class="py-2">
             <%= button_to 'Remove', remove_item_cart_path(item.product), method: :delete, class: 'btn btn-danger' %>
           </td>
         </tr>
       <% end %>
     </tbody>
   </table>
-  <h2>Total: <%= number_to_currency(@order_items.sum { |item| item.unit_price * item.quantity }) %></h2>
-   <%= button_to 'Checkout', checkout_create_path, method: :post, class: 'btn btn-primary' %>
+  <h2 class="mb-4 p-3">Total <%= number_to_currency(@order_items.sum { |item| item.unit_price * item.quantity }) %></h2>
+  <div class="flex justify-start m-5">
+    <%= button_to 'Checkout', checkout_create_path, method: :post, class: 'btn btn-success' %>
+  </div>
 <% else %>
-  <p>Your cart is empty.</p>
+  <p class="my-4 p-5">Your cart is empty.</p>
 <% end %>
-
-<%# <%= javascript_include_tag "checkout" %>

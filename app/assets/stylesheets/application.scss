@@ -200,7 +200,7 @@ input.btn {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   .product-image {
     position: relative;
-    left: 29%;
+    background-color: black;
     margin: 5rem;
     display: flex;
     justify-content: center;
@@ -212,4 +212,15 @@ input.btn {
 
 .product-btn {
   padding: 2rem;
+}
+
+.btn-custom-primary {
+  background-color: #1c4ed8;
+  border-color: #1c4ed8;
+  color: white; /* Pour s'assurer que le texte est lisible */
+}
+
+.btn-custom-primary:hover {
+  background-color: #163ba5; /* Optionnel : une teinte légèrement plus foncée pour l'effet de survol */
+  border-color: #163ba5;
 }

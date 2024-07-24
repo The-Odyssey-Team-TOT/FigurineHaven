@@ -1,14 +1,39 @@
-<div class="product-details-container">
-  <%= image_tag @product.image_url, alt: @product.name, class: 'product-image' %>
-  <h1><%= @product.name %></h1>
-  <p><strong>Description:</strong> <%= @product.description %></p>
-  <p><strong>Price:</strong> <%= number_to_currency(@product.price) %></p>
-  <p><strong>Stock:</strong> <%= @product.stock %></p>
-  <div class="product-btn">
-    <%# <%= link_to 'Edit', edit_product_path(@product), class: 'btn btn-primary' %>
-    <div>
-    <%= link_to 'Back', products_path, class: 'btn btn-secondary' %>
-    </div>
-    <%= button_to 'Add to Cart', add_item_cart_path(@product), method: :post, class: 'btn btn-success ml-2' %>
+<div class="product-details-container mx-auto max-w-2xl my-10 p-5 border rounded-lg shadow-lg bg-custom">
+  <div class="text-center mb-5">
+    <%= image_tag @product.image_url, alt: @product.name, class: 'product-image mx-auto' %>
+  </div>
+  <h1 class="text-2xl font-bold mb-3 text-white"><%= @product.name %></h1>
+  <p class="mb-4 text-white"><strong>Description -</strong> <%= @product.description %></p>
+  <p class="mb-4 text-white"> <%= number_to_currency(@product.price) %></p>
+  <p class="mb-4 text-white"><strong>Stock -</strong> <%= @product.stock %></p>
+  <div class="product-btn flex justify-center space-x-4 mt-5">
+    <%= link_to 'Back', shops_path, class: 'btn btn-secondary text-white' %>
+    <%= button_to 'Add to Cart', add_item_cart_path(@product), method: :post, class: 'btn btn-success text-white' %>
   </div>
 </div>
+
+<style>
+  .product-details-container {
+    max-width: 32rem;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #1e2836;
+  }
+
+  .product-image {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .product-btn {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .product-btn .btn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+  }
+</style>
