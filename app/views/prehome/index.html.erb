@@ -53,8 +53,8 @@
       z-index: 20;
     }
 
-    .textdecooff{
-        text-decoration:none;
+    .textdecooff {
+        text-decoration: none;
     }
   </style>
   <script>
@@ -63,8 +63,14 @@
       window.location.href = '<%= intermediate_transition_path %>';
     }
 
-    // Ajout d'écouteurs d'événements pour rediriger sur clic ou touche enfoncée
+    // Vérifier si la page a déjà été rechargée
     document.addEventListener('DOMContentLoaded', function() {
+      if (!sessionStorage.getItem('pageReloaded')) {
+        sessionStorage.setItem('pageReloaded', 'true');
+        window.location.reload();
+      }
+
+      // Ajout d'écouteurs d'événements pour rediriger sur clic ou touche enfoncée
       document.body.addEventListener('click', redirectToTransition);
       document.body.addEventListener('keydown', redirectToTransition);
     });
@@ -73,7 +79,7 @@
 <body id="GlobeCanvas" data-controller="globe">
   <div class="content">
     <h1 class="text-6xl font-bold mb-4">FigurineHaven</h1>
-    <p class="text-xl mb-8">The best StarWars Merch</p>
+    <p class="text-xl mb-8">The best StarWars Figurine</p>
     <div class="space-x-4">
       <!-- Boutons désactivés pour l'instant -->
       <%# <a href="/users/sign_up" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 textdecooff buttonRounded">Sign up</a>
