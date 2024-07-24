@@ -7,7 +7,7 @@ class CartsController < ApplicationController
     @cart_item = @order.order_items.find_or_initialize_by(product: product)
 
     @cart_item.unit_price = product.price
-    @cart_item.quantity += 1
+    @cart_item.quantity += 1 unless @cart_item.new_record?
 
     if @cart_item.save
       redirect_to cart_path, notice: 'Product was successfully added to your cart.'
