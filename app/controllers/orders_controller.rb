@@ -7,5 +7,6 @@ class OrdersController < ApplicationController
 
   def show
     @order = current_user.orders.find(params[:id])
+    @total_price = @order.order_items.sum { |item| item.unit_price * item.quantity }
   end
 end
