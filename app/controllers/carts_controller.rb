@@ -3,14 +3,11 @@ class CartsController < ApplicationController
 
   def add_item
     product = Product.find(params[:product_id])
+    @order = current_user.orders.find_or_initialize_by(status: 'cart')
     @cart_item = @order.order_items.find_or_initialize_by(product: product)
 
-    if @cart_item.new_record?
-      @cart_item.quantity = 1
-      @cart_item.unit_price = product.price # Assurez-vous que le prix est défini
-    else
-      @cart_item.quantity += 1
-    end
+    @cart_item.unit_price = product.price
+    @cart_item.quantity += 1
 
     if @cart_item.save
       redirect_to cart_path, notice: 'Product was successfully added to your cart.'

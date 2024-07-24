@@ -1,6 +1,13 @@
 <div class="container mx-auto my-5">
   <h1 class="text-3xl font-bold mb-5 text-center text-black">Our Products</h1>
 
+  <%= form_with url: products_path, method: :get, local: true, class: "mb-5" do |form| %>
+    <div class="flex justify-center">
+      <%= form.text_field :query, placeholder: "  Search", class: "form-input rounded mr-2 w-full md:w-1/2" %>
+      <%= form.submit "Search", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
     <% @products.each do |product| %>
       <div class="product-card bg-gray-800 text-white rounded-lg shadow-lg p-5">
@@ -14,3 +21,24 @@
     <% end %>
   </div>
 </div>
+
+<style>
+  .product-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-card img {
+    max-height: 200px;
+    object-fit: cover;
+  }
+
+  .product-card h2, .product-card p, .product-card a {
+    margin-bottom: 0.5rem;
+  }
+
+  .product-card .btn {
+    margin-top: auto; /* Place the button at the bottom */
+  }
+</style>

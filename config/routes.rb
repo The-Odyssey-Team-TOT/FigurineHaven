@@ -1,14 +1,18 @@
 Rails.application.routes.draw do
+  get 'intermediate/transition'
+  get 'prehome/index'
+  get 'payments/new'
   get 'checkouts/create'
   devise_for :users
-  root to: "pages#home"
+  root to: "prehome#index"
 
   get 'up' => 'rails/health#show', as: :rails_health_check
 
   resources :shops, only: [:index, :new, :show, :create, :destroy]
 
-  resources :orders, only: [:index, :show]
-
+  resources :orders, only: [:index, :show] do
+    resources :payments, only: [:new]
+  end
   resources :products do
     member do
       post 'add_to_cart', to: 'carts#add_item'
@@ -21,4 +25,7 @@ Rails.application.routes.draw do
   end
 
   post 'checkout/create', to: 'checkouts#create', as: 'checkout_create'
+
+  # Nouvelle route pour "prehome#index"
+  get 'prehome', to: 'prehome#index', as: 'prehome'
 end

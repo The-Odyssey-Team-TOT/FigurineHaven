@@ -2,7 +2,12 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = Product.all
+    if params[:query].present?
+      # Recherche de produits par nom
+      @products = Product.where("name ILIKE ?", "%#{params[:query]}%")
+    else
+      @products = Product.all
+    end
   end
 
   def show
@@ -33,8 +38,11 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product.destroy
-    redirect_to products_url, notice: 'Product was successfully destroyed.'
+    if @product.destroy
+      redirect_to products_url, notice: 'Product was successfully destroyed.'
+    else
+      redirect_to products_url, alert: 'Failed to destroy the product. Please try again.'
+    end
   end
 
   private
