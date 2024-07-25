@@ -32,5 +32,6 @@ module FigurineHaven
     # config.eager_load_paths << Rails.root.join("extras")
     # config.assets.compile = true
     # config.assets.digest = true
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
   end
 end
