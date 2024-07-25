@@ -14,6 +14,9 @@
 
 @import url("https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css");
 
+
+
+
 @font-face {
   font-family: 'Starjout';
   src: url('/assets/Starjout.ttf') format('truetype');
@@ -21,6 +24,10 @@
   font-style: normal;
 }
 
+
+nav {
+  background-color: #fce820;
+}
 
 html, body {
   font-family: 'Starjout', sans-serif;
