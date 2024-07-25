@@ -1,12 +1,12 @@
-<div class="container mx-auto my-8 p-6 max-w-lg bg-gray-800 shadow-md rounded-lg">
-  <h1 class="text-3xl mb-5 text-center text-white">Checkout Summary</h1>
-  <p class="mb-4 ml-7 text-white">You are purchasing the following items</p>
+<div class="container mx-auto my-8 p-6 max-w-lg shadow-md rounded-lg">
+  <h1 class="text-3xl mb-5 text-center text-black">Checkout Summary</h1>
+  <p class="mb-4 ml-7 text-black">You are purchasing the following items</p>
   <ul class="mb-4 list-disc list-inside">
     <% @order.order_items.each do |item| %>
-      <li class="flex items-center mb-4 text-white">
+      <li class="flex items-center mb-4 text-black">
         <%= image_tag(item.product.image_url, alt: item.product.name, class: 'w-20 h-20 object-cover rounded-full mr-4') %>
         <div>
-          <strong><%= item.product.name %></strong> - Quantity: <%= item.quantity %> - Unit Price: <%= number_to_currency(item.unit_price) %>
+          <strong><%= item.product.name %></strong> - Quantity <%= item.quantity %> - Unit Price in dollars <%= number_to_currency(item.unit_price) %>
         </div>
       </li>
     <% end %>
@@ -25,6 +25,11 @@
 </div>
 
 <style>
+
+.container.mx-auto.my-8.p-6.max-w-lg.shadow-md.rounded-lg {
+  background-color: #ffeb02;
+}
+
 #pay {
   background-color: #0000FF;
   width: 100%;
