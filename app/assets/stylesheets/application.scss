@@ -12,8 +12,6 @@
 @import "pages/index";
 @import "pages/login";
 
-@import url("https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css");
-
 
 
 
@@ -106,12 +104,6 @@ p.notice {
 
 img {
   object-fit: cover;
-}
-
-.mapboxgl-map {
-  margin-bottom: 5rem;
-  border-radius: 10px;
-  width: 60%;
 }
 
 input.btn {
