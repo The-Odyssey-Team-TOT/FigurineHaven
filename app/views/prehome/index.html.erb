@@ -54,7 +54,19 @@
     }
 
     .textdecooff {
-        text-decoration: none;
+      text-decoration: none;
+    }
+
+    .github-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .github-link img {
+      width: 50px;
+      height: 50px;
     }
   </style>
   <script>
@@ -80,6 +92,16 @@
   <div class="content">
     <h1 class="text-6xl font-bold mb-4">FigurineHaven</h1>
     <p class="text-xl mb-8">The best StarWars Figurine</p>
+    <div class="github-links">
+    <a href="https://github.com/DALM1" target="_blank" class="github-link">
+    By DALM1
+        <img src="<%= asset_path('github-188.png') %>" alt="GitHub DALM1">
+      </a>
+       <a href="https://github.com/kami517" target="_blank" class="github-link">
+      and kami517
+        <img src="<%= asset_path('github-188.png') %>" alt="GitHub kami517">
+      </a>
+    </div>
     <div class="space-x-4">
       <!-- Boutons désactivés pour l'instant -->
       <%# <a href="/users/sign_up" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 textdecooff buttonRounded">Sign up</a>
@@ -168,3 +190,14 @@
   </script>
 </body>
 </html>
+
+
+<style>
+a.github-link {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+</style>
