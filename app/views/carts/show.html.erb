@@ -24,7 +24,7 @@
       <% end %>
     </tbody>
   </table>
-  <h2 class="mb-4 p-3 text-white">Total <%= number_to_currency(@order_items.sum { |item| item.unit_price * item.quantity }) %></h2>
+  <h2 class="mb-4 p-3 text-white">Total <%= number_to_currency(@order_items.sum { |item| item.unit_price * item.quantity }) %> dollars</h2>
   <div class="flex justify-start m-5">
     <%= button_to 'Checkout', checkout_create_path, method: :post, class: 'rounded-full text-white' %>
   </div>
