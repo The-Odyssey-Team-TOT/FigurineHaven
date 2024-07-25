@@ -9,7 +9,7 @@ class CartsController < ApplicationController
     @cart_item.quantity += 1 unless @cart_item.new_record?
 
     if @cart_item.save
-      redirect_to cart_path, notice: 'Product was successfully added to your cart.'
+      redirect_to shops_path, notice: 'Product was successfully added to your cart.'
     else
       redirect_to product_path(product), alert: 'There was a problem adding the product to your cart.'
     end
