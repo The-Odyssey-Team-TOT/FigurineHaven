@@ -17,7 +17,7 @@
 
 @font-face {
   font-family: 'Starjout';
-  src: font_url('/assets/Starjout.ttf') format('truetype');
+  src: font-url('Starjout.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -39,7 +39,7 @@ body {
   color: white;
   display: flex;
   flex-direction: column;
-  background-image: url('/assets/8k_stars.jpg') !important;
+  background-image: url('8k_stars.jpg') !important;
   background-size: cover;
 }
 

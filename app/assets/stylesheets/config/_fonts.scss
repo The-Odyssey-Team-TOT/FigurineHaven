@@ -5,6 +5,13 @@
 $body-font: "Work Sans", "Helvetica", "sans-serif";
 $headers-font: "Nunito", "Helvetica", "sans-serif";
 
+@font-face {
+  font-family: 'Starjout';
+  src: font-url('Starjout.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 // To use a font file (.woff) uncomment following lines
 // @font-face {
 //   font-family: "Font Name";
