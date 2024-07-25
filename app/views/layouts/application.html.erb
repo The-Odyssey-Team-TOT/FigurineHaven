@@ -13,12 +13,16 @@
   </head>
 
   <body>
+    <% if @show_navbar != false %>
     <%= render "components/navbar" %>
+  <% end %>
     <div class="bg-secondary text-dark bg-opacity-10">
       <%= yield %>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
     </div>
+    <% if @show_footer != false %>
     <%= render "components/footer" %>
+  <% end %>
   </body>
 </html>

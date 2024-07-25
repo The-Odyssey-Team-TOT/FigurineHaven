@@ -1,4 +1,4 @@
-<h1 class="p-5">My Cart</h1>
+<h1 class="p-5 text-white">My Cart</h1>
 <% if @order_items.any? %>
   <table class="table mb-5">
     <thead>
@@ -18,16 +18,41 @@
           <td class="py-2"><%= number_to_currency(item.unit_price) %></td>
           <td class="py-2"><%= number_to_currency(item.unit_price * item.quantity) %></td>
           <td class="py-2">
-            <%= button_to 'Remove', remove_item_cart_path(item.product), method: :delete, class: 'btn btn-danger' %>
+            <%= button_to 'Remove', remove_item_cart_path(item.product), method: :delete, class: 'rounded-full m-0 text-white' %>
           </td>
         </tr>
       <% end %>
     </tbody>
   </table>
-  <h2 class="mb-4 p-3">Total <%= number_to_currency(@order_items.sum { |item| item.unit_price * item.quantity }) %></h2>
+  <h2 class="mb-4 p-3 text-white">Total <%= number_to_currency(@order_items.sum { |item| item.unit_price * item.quantity }) %></h2>
   <div class="flex justify-start m-5">
-    <%= button_to 'Checkout', checkout_create_path, method: :post, class: 'btn btn-success' %>
+    <%= button_to 'Checkout', checkout_create_path, method: :post, class: 'rounded-full text-white' %>
   </div>
 <% else %>
-  <p class="my-4 p-5">Your cart is empty.</p>
+  <p class="my-4 p-5 text-white">Your cart is empty.</p>
 <% end %>
+
+
+<style>
+
+button.rounded-full.text-white {
+  padding: 0.370rem;
+  background-color: #0000FF;
+}
+
+button.rounded-full.text-white:hover {
+  padding: 0.370rem;
+   background-color: #060663;
+}
+
+button.rounded-full.m-0.text-white {
+  padding: 0.370rem;
+  background-color: #e50915;
+}
+
+button.rounded-full.m-0.text-white:hover {
+  padding: 0.370rem;
+  background-color: #e50600;
+}
+
+</style>

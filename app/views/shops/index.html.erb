@@ -1,10 +1,10 @@
 <div class="container mx-auto my-5">
-  <h1 class="text-3xl font-bold mb-5 text-center text-black">Our Products</h1>
+  <h1 class="text-3xl mb-5 text-center text-white">our Products</h1>
 
   <%= form_with url: products_path, method: :get, local: true, class: "mb-5" do |form| %>
     <div class="flex justify-center">
-      <%= form.text_field :query, placeholder: "  Search", class: "form-input rounded mr-2 w-full md:w-1/2" %>
-      <%= form.submit "Search",  class: "btn btn-primary" %>
+      <%= form.text_field :query, placeholder: " Search", class: "form-input rounded-full mr-2 w-full md:w-1/2 pl-4" %>
+      <%= form.submit "Search", class: "rounded-full text-white" %>
     </div>
   <% end %>
 
@@ -12,17 +12,22 @@
     <% @products.each do |product| %>
       <div class="product-card bg-gray-800 text-white rounded-lg shadow-lg p-5">
         <%= image_tag product.image_url, class: "w-full h-48 object-cover rounded-t-lg mb-4" %>
-        <h2 class="text-xl font-semibold mb-2"><%= product.name %></h2>
+        <h2 class="text-xl mb-2"><%= product.name %></h2>
         <p class="mb-4"><%= truncate(product.description, length: 100) %></p>
-        <p class="text-lg font-bold mb-2"><%= number_to_currency(product.price) %></p>
-        <p class="text-sm mb-4">Stock: <%= product.stock %></p>
-        <%= link_to 'View Product', product_path(product), class: "btn btn-primary w-full" %>
+        <p class="text-lg mb-2"><%= number_to_currency(product.price) %></p>
+        <p class="text-sm mb-4">Stock - <%= product.stock %></p>
+        <%= link_to ' see more', product_path(product), class: "w-full rounded-full flex justify-center" %>
       </div>
     <% end %>
   </div>
 </div>
 
 <style>
+
+  h1, h2 {
+    font-family: 'Starjout', sans-serif;
+  }
+
   .product-card {
     height: 100%;
     display: flex;
@@ -41,4 +46,19 @@
   .product-card .btn {
     margin-top: auto; /* Place the button at the bottom */
   }
+
+  input.rounded-full.text-white {
+    background-color: blue;
+    padding: 0.270rem;
+  }
+
+  a.w-full.rounded-full {
+    padding: 0.270rem;
+    background-color: #0000FF;
+    color: white;
+  }
+
+   a.w-full.rounded-full:hover {
+     background-color: #060663;
+   }
 </style>

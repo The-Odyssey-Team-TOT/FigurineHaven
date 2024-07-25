@@ -26,6 +26,5 @@ Rails.application.routes.draw do
 
   post 'checkout/create', to: 'checkouts#create', as: 'checkout_create'
 
-  # Nouvelle route pour "prehome#index"
   get 'prehome', to: 'prehome#index', as: 'prehome'
 end

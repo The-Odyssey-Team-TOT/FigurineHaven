@@ -1,12 +1,17 @@
-<div class="container mx-auto my-8 p-6 max-w-lg bg-white shadow-md rounded-lg">
-  <h1 class="text-3xl font-bold mb-5 text-center text-black">Checkout Summary</h1>
-  <p class="mb-4">You are purchasing the following items:</p>
+<div class="container mx-auto my-8 p-6 max-w-lg bg-gray-800 shadow-md rounded-lg">
+  <h1 class="text-3xl mb-5 text-center text-white">Checkout Summary</h1>
+  <p class="mb-4 ml-7 text-white">You are purchasing the following items</p>
   <ul class="mb-4 list-disc list-inside">
     <% @order.order_items.each do |item| %>
-      <li><strong><%= item.product.name %></strong> - Quantity: <%= item.quantity %> - Unit Price: <%= number_to_currency(item.unit_price) %></li>
+      <li class="flex items-center mb-4 text-white">
+        <%= image_tag(item.product.image_url, alt: item.product.name, class: 'w-20 h-20 object-cover rounded-full mr-4') %>
+        <div>
+          <strong><%= item.product.name %></strong> - Quantity: <%= item.quantity %> - Unit Price: <%= number_to_currency(item.unit_price) %>
+        </div>
+      </li>
     <% end %>
   </ul>
-  <button id="pay" class="w-full bg-blue-600 text-white py-2 rounded">Pay</button>
+  <button id="pay" class="w-full text-white py-2 rounded">Pay</button>
 
   <script src="https://js.stripe.com/v3/"></script>
   <script>
@@ -18,3 +23,18 @@
     });
   </script>
 </div>
+
+<style>
+#pay {
+  background-color: #0000FF;
+  width: 100%;
+}
+
+#pay:hover {
+  background-color: #060663;
+}
+
+.container img {
+  margin-right: 1rem;
+}
+</style>

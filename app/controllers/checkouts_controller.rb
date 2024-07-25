@@ -9,7 +9,7 @@ class CheckoutsController < ApplicationController
 
     if @order.update(status: 'pending')
       begin
-        # Créer une session de paiement Stripe
+        # - session de paiement Stripe -
         session = Stripe::Checkout::Session.create(
           mode: 'payment',
           payment_method_types: ['card'],
@@ -22,7 +22,7 @@ class CheckoutsController < ApplicationController
                   description: item.product.description,
                   images: [item.product.image_url]
                 },
-                unit_amount: (item.unit_price * 100).to_i # montant en centimes
+                unit_amount: (item.unit_price * 100).to_i
               },
               quantity: item.quantity
             }
@@ -35,7 +35,7 @@ class CheckoutsController < ApplicationController
         redirect_to new_order_payment_path(@order)
       rescue Stripe::StripeError => e
         logger.error "Stripe error: #{e.message}"
-        @order.update(status: 'cart') # Rétablir le statut si l'erreur se produit
+        @order.update(status: 'cart') # Rétablir le statut si l'err se produit
         render json: { error: 'Unable to create Stripe session' }, status: :internal_server_error
       end
     else

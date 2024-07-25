@@ -14,8 +14,16 @@
 
 @import url("https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css");
 
+@font-face {
+  font-family: 'Starjout';
+  src: url('/assets/Starjout.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 
 html, body {
+  font-family: 'Starjout', sans-serif;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -23,8 +31,15 @@ html, body {
 }
 
 body {
+  color: white;
   display: flex;
   flex-direction: column;
+  background-image: url('/assets/8k_stars.jpg') !important;
+  background-size: cover;
+}
+
+img {
+  object-fit: cover !important;
 }
 
 
@@ -223,4 +238,8 @@ input.btn {
 .btn-custom-primary:hover {
   background-color: #163ba5; /* Optionnel : une teinte légèrement plus foncée pour l'effet de survol */
   border-color: #163ba5;
+}
+
+footer {
+  background-image: url('https://www.solarsystemscope.com/textures/download/2k_stars.jpg') !important;
 }
